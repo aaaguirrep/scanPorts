@@ -14,6 +14,7 @@ trap ctrl_c INT
 openPorts=()
 
 function ctrl_c(){
+    rm ports.tmp
     echo -e "\n${redColour}[*] Exiting...${endColour}"
     tput cnorm
     exit 0
@@ -56,7 +57,7 @@ if [ "$(id -u)" == "0" ]; then
     if [ $param_counter -ne 1 ]; then
         help
     else
-        startScan
+        startScan; wait
 	    openPorts=$(cat ports.tmp | tr '\n' ',' | sort)
 	    echo -e "\n\t${redColour}Open Ports: ${grayColour}${openPorts::-1}\n"
         rm ports.tmp
