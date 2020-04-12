@@ -59,7 +59,7 @@ if [ "$(id -u)" == "0" ]; then
     else
         startScan; wait
 	    openPorts=$(cat ports.tmp | tr '\n' ',' | sort)
-	    echo -e "\n\t${redColour}Open Ports: ${grayColour}${openPorts::-1}\n"
+	    echo -e "\n\t${redColour}Open Ports: ${grayColour}${openPorts::-1}${endColour}\n"
         rm ports.tmp
     fi  
 else
